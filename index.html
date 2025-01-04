@@ -1,0 +1,123 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Do You Love Me?
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .header {
+            position: relative;
+        }
+        .header img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .header::after {
+            content: "Do You Love Me?";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .content {
+            padding: 20px;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+        }
+        .buttons button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="header">
+    <img alt="Anime character with a romantic background asking 'Do You Love Me?'" height="200" src="https://storage.googleapis.com/a1aa/image/mOTYzwPj03pSItt9sPrDwgGrfAmKYPyH6KumWAJGQPl7ftBUA.jpg" width="400"/>
+   </div>
+   <div class="content">
+    <div class="question">
+     Do you love me?
+    </div>
+    <div class="buttons">
+     <button id="yesButton">
+      Yes
+     </button>
+     <button id="noButton">
+      No
+     </button>
+    </div>
+   </div>
+  </div>
+  <script>
+   const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+
+        noButton.addEventListener('click', () => {
+            const container = noButton.parentElement;
+            const yesButtonRect = yesButton.getBoundingClientRect();
+            const noButtonRect = noButton.getBoundingClientRect();
+
+            const tempTop = yesButtonRect.top - container.getBoundingClientRect().top;
+            const tempLeft = yesButtonRect.left - container.getBoundingClientRect().left;
+
+            yesButton.style.position = 'absolute';
+            yesButton.style.top = `${noButtonRect.top - container.getBoundingClientRect().top}px`;
+            yesButton.style.left = `${noButtonRect.left - container.getBoundingClientRect().left}px`;
+
+            noButton.style.position = 'absolute';
+            noButton.style.top = `${tempTop}px`;
+            noButton.style.left = `${tempLeft}px`;
+        });
+
+        yesButton.addEventListener('click', () => {
+            alert('I already know you love me..!!s');
+        });
+  </script>
+ </body>
+</html>
